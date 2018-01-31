@@ -24,8 +24,8 @@
 						</form>';
 					} else {
 						echo '<form action="includes/login.inc.php" method="POST">
-							<input type="text" name="uid" placeholder="Username/e-mail" required>
-							<input type="password" name="pwd" placeholder="password" required>
+							<input type="text" name="uid" placeholder="Username/E-mail" required>
+							<input type="password" name="pwd" placeholder="Password" required>
 							<button type="submit" name="submit">Login</button>
 						</form>
 						<a href="signup.php">Sign up</a>';
