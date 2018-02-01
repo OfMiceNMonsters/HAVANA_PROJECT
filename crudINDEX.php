@@ -3,6 +3,8 @@ $conn=mysqli_connect("localhost","root","","havana");
 
 
 if(isset($_POST["insert"]))
+{
+	if($_POST["insert"]=="yes")
 	{
 		/*$name=$_POST["name"];
 		$image=$_POST["image"];
@@ -14,9 +16,76 @@ if(isset($_POST["insert"]))
 			echo "<center>Record Inserted!</center><br>";
 		} */
 
+	if (empty($name) || empty($image) || empty($price) || empty($size)) 
+	{
+		header("Location: ../crudindex.php?input=empty");
+		exit();
+	} else
 
-		require_once 'admininsert.php';
+	{
+		//Check if input characters are valid
+		if (!preg_match("/^[a-zA-Z]+$/", $name)) 
+		{
+			header("Location: ../crudindex.php?insert=invalid");
+			exit();
+		} else
+		{
+
+			$sql = "SELECT * FROM tbl_product WHERE name='$name'";
+			$result = mysqli_query($conn, $sql);
+			$resultCheck = mysqli_num_rows($result);
+			if ($resultCheck > 0) 
+			{
+					header("Location: ../crudindex.php?insert=nametaken");
+					exit();
+			} else 
+
+				{
+					$sql = "SELECT * FROM tbl_product WHERE image='$image'";
+					$result = mysqli_query($conn, $sql);
+					$resultCheck = mysqli_num_rows($result);
+
+					if ($resultCheck > 0) 
+					{
+						header("Location: ../crudindex.php?insert=repeatedimage");
+						exit();
+
+					} else 
+
+					{
+						$sql = "SELECT * FROM tbl_product WHERE size='$size'";
+						$result = mysqli_query($conn, $sql);
+						$resultCheck = mysqli_num_rows($result);
+
+						if ($resultCheck > 0) 
+						{
+						header("Location: ../crudindex.php?insert=repeatedimage");
+						exit();
+
+						} else
+
+						{
+							//Insert the item into the database
+							$query = $connect-> prepare("INSERT INTO tbl_product (name,image, price, size) VALUES ('$name', '$image', '$price', '$size');");
+								if($query->execute())
+								{
+									echo "<center>Successful!</center><br>";
+								}
+								mysqli_query($conn, $sql);
+								header("Location: ../crudindex.php");
+								exit();
+						}
+					}
+				}
+
 	}
+
+	}
+} else {
+	header("Location: ../crudindex.php");
+	exit();
+}
+
 
 
 if(isset($_POST["update"])){
@@ -52,7 +121,7 @@ if(isset($_GET['operation'])){
 <br>
 <h1><center>ADMIN</center></h1>
 <br>
-<form method="post" action="crudINDEX.php">
+<form method="post" action="crudindex.php">
 <table align="center" border="0">
 <tr>
 <td>Name:</td>
@@ -102,7 +171,7 @@ while($query->fetch())
 	echo "<td>$".$price."</td>";
 	echo "<td>".$size."</td>";
 	echo "<td><a href='crudUPDATE.php?operation=edit&id=".$id."&name=".$name."&image=".$image."&price=".$price."&size=".$size."'>Edit</a></td>";
-	echo "<td><a href='crudINDEX.php?operation=delete&id=".$id."'>Delete</a></td>";
+	echo "<td><a href='crudindex.php?operation=delete&id=".$id."'>Delete</a></td>";
 	echo "</tr>";	
 	
 }
