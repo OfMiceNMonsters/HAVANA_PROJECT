@@ -1,17 +1,18 @@
 <?php
 	include_once 'dbh.inc.php';
-	if (isset($_POST['insert'])) {
+	
+if (isset($_POST['insert'])) {
 	
 
 if($_POST["insert"]=="yes")
 {
-	if (empty($name) || empty($image) || empty($price) || empty($size) {
-		header("Location: ../signup.php?input=empty");
+	if (empty($name) || empty($image) || empty($price) || empty($size)) {
+		header("Location: ../crudindex.php?input=empty");
 		exit();
 	} else {
 		//Check if input characters are valid
 		if (!preg_match("/^[a-zA-Z]+$/", $name)) {
-			header("Location: ../crudINDEX.php?insert=invalid");
+			header("Location: ../crudindex.php?insert=invalid");
 			exit();
 		} else {
 
@@ -19,7 +20,7 @@ if($_POST["insert"]=="yes")
 				$result = mysqli_query($conn, $sql);
 				$resultCheck = mysqli_num_rows($result);
 				if ($resultCheck > 0) {
-					header("Location: ../crudINDEX.php?insert=nametaken");
+					header("Location: ../crudindex.php?insert=nametaken");
 					exit();
 				} else {
 					$sql = "SELECT * FROM tbl_product WHERE image='$image'";
@@ -27,7 +28,7 @@ if($_POST["insert"]=="yes")
 					$resultCheck = mysqli_num_rows($result);
 
 					if ($resultCheck > 0) {
-						header("Location: ../crudINDEX.php?insert=repeatedimage");
+						header("Location: ../crudindex.php?insert=repeatedimage");
 						exit();
 
 					}	else {
@@ -36,7 +37,7 @@ if($_POST["insert"]=="yes")
 					$resultCheck = mysqli_num_rows($result);
 
 					if ($resultCheck > 0) {
-						header("Location: ../crudINDEX.php?insert=repeatedimage");
+						header("Location: ../crudindex.php?insert=repeatedimage");
 						exit();
 
 					}else{
@@ -47,7 +48,7 @@ if($_POST["insert"]=="yes")
 			echo "<center>Successful!</center><br>";
 		}
 					mysqli_query($conn, $sql);
-					header("Location: ../crudINDEX.php");
+					header("Location: ../crudindex.php");
 					exit();
 					}
 				}
@@ -56,7 +57,7 @@ if($_POST["insert"]=="yes")
 
 
 } else {
-	header("Location: ../crudINDEX.php");
+	header("Location: ../crudindex.php");
 	exit();
 }
 ?>
