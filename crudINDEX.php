@@ -15,10 +15,10 @@ if(isset($_POST["insert"]))
 		{
 			echo "<center>Record Inserted!</center><br>";
 		} */
-	$name = mysqli_real_escape_string($conn, $_POST['name']);
-	$image = mysqli_real_escape_string($conn, $_POST['image']);
-	$price = mysqli_real_escape_string($conn, $_POST['price']);
-	$size = mysqli_real_escape_string($conn, $_POST['size']);
+	$name = $_POST['name'];
+	$image = $_POST['image'];
+	$price = $_POST['price'];
+	$size = $_POST['size'];
 
 
 	if (empty($name) || empty($image) || empty($price) || empty($size)) 
@@ -57,21 +57,9 @@ if(isset($_POST["insert"]))
 
 					} else 
 
-					{
-						$sql = "SELECT * FROM tbl_product WHERE size='$size'";
-						$result = mysqli_query($conn, $sql);
-						$resultCheck = mysqli_num_rows($result);
-
-						if ($resultCheck > 0) 
-						{
-						header("Location: ../crudindex.php?insert=repeatedimage");
-						exit();
-
-						} else
-
 						{
 							//Insert the item into the database
-							$query = $connect-> prepare("INSERT INTO tbl_product (name,image, price, size) VALUES ('$name', '$image', '$price', '$size');");
+							$query = $connect-> prepare("insert into tbl_product (name, image, price, size) values ('$name', '$image', '$price', '$size');");
 								if($query->execute())
 								{
 									echo "<center>Successful!</center><br>";
@@ -80,7 +68,7 @@ if(isset($_POST["insert"]))
 								header("Location: ../crudindex.php");
 								exit();
 						}
-					}
+					
 				}
 
 	}
