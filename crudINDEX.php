@@ -59,14 +59,12 @@ if(isset($_POST["insert"]))
 
 						{
 							//Insert the item into the database
-							$query = $connect-> prepare("insert into tbl_product (name, image, price, size) values ('$name', '$image', '$price', '$size');");
+							$query = $conn-> prepare("insert into tbl_product (name, image, price, size) values ('$name', '$image', '$price', '$size');");
 								if($query->execute())
 								{
 									echo "<center>Successful!</center><br>";
 								}
-								mysqli_query($conn, $sql);
-								header("Location: ../crudindex.php");
-								exit();
+
 						}
 					
 				}
