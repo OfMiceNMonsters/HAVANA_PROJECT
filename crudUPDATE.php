@@ -1,4 +1,13 @@
 <html>
+<body>
+<body style="background-image:url(https://1.bp.blogspot.com/-6O5imzhlGO4/WnRN-L93POI/AAAAAAAADVw/YHZMSO2j00cv2I5pPDxQqN6Ez2nny3u7gCLcBGAs/s1600/original%2B%25282%2529-horz-vert.jpg)">	
+	<br>
+	<br>
+<section class="container" style="background-color: white;">
+<br>
+<br>
+<h1><center>EDIT</center></h1>
+<br>
 <form method="post" action="crudINDEX.php">
 <table align="center" border="0">
 <tr>
@@ -23,8 +32,13 @@
 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>" />
 <input type="hidden" name="update" value="yes" />
 <input type="submit" value="update Record"/>
+<br>
+<br>
+<br>
 </td>
 </tr>
 </table>
 </form>
+</section>
+</body>
 <html>
