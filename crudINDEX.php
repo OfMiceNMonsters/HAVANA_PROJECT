@@ -109,9 +109,16 @@ if(isset($_GET['operation'])){
 }
 ?>
 <html>
+<title>HAVANA ADMIN</title>
 <body>
+<body style="background-image:url(https://1.bp.blogspot.com/-6O5imzhlGO4/WnRN-L93POI/AAAAAAAADVw/YHZMSO2j00cv2I5pPDxQqN6Ez2nny3u7gCLcBGAs/s1600/original%2B%25282%2529-horz-vert.jpg)">	
 <br>
-<h1><center>ADMIN</center></h1>
+<br>
+<br>
+<section class="container" style="background-color: white;">
+
+	<br>
+<h1><center><a href="crudindex.php">ADMIN</a></center></h1>
 <br>
 <form method="post" action="crudindex.php">
 <table align="center" border="0">
@@ -140,7 +147,13 @@ if(isset($_GET['operation'])){
 </tr>
 </table>
 </form>
-
+<br>
+</section>
+<br>
+<br>
+<section class="container" style="background-color: white;">
+	<br>
+	<br>
 <?php
 $query=$conn->prepare("select * from tbl_product");
 $query->execute();
@@ -175,7 +188,10 @@ echo "</table>";
 <div align="center">
 		
 	<a href="index.php"><big>Go to HAVANA Oo NANA</big></a>
+	<br>
+	<br>.
 
 </div>
+</section>
 </body>
 </html>
