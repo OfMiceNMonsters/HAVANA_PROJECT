@@ -1,5 +1,5 @@
 <?php
-	include_once 'header.php';
+	include_once 'afterlogin.php';
 ?>
 
 <section class="main-container">
@@ -14,7 +14,7 @@
 				</tr>
 			</table>
 
-				<form class="checkout-form" action="retrieve.php" method="POST">
+				<form class="checkout-form" action="includes/prepared.inc.php" method="POST">
 					<label>Name:</label>
 					<input type="text" name="name" placeholder="Nur Syarifah Shah" required>
 
@@ -51,7 +51,7 @@
 					<br/>
 
 					<label>Shipping:</label>
-					<input type="text" name="delivery" placeholder="Enter Standard or Express" required pattern="Standard" >
+					<input type="text" name="delivery" placeholder="Enter Standard or Express" required>
 
 					<br/><br/><br/><br/>
 
@@ -86,7 +86,8 @@
 
 					<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-					<button type="submit" name="submit">CONTINUE</button>
+					<button type="submit" name="submit">SUBMIT</button>
+					
 			</form>
 
 		</div>
