@@ -372,14 +372,10 @@ header .nav-login a {
 }
   
 
-/*start style for summarry.php*/
-.bye button {
-    float: right;
-}
 
-/*start style for retrieve.php*/
-button {
-    float: right;
+/*start style for summarry.php*/
+.summary-form button {
+    float: left;
 }
 
 /*start style for shipping.php*/
@@ -419,12 +415,9 @@ button {
     margin-top: 10px;
 }
 
-
 button {
     float: right;
 }
-
-
 
 
 
