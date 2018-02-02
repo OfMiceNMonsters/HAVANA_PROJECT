@@ -15,6 +15,11 @@ if(isset($_POST["insert"]))
 		{
 			echo "<center>Record Inserted!</center><br>";
 		} */
+	$name = mysqli_real_escape_string($conn, $_POST['name']);
+	$image = mysqli_real_escape_string($conn, $_POST['image']);
+	$price = mysqli_real_escape_string($conn, $_POST['price']);
+	$size = mysqli_real_escape_string($conn, $_POST['size']);
+
 
 	if (empty($name) || empty($image) || empty($price) || empty($size)) 
 	{
@@ -24,7 +29,7 @@ if(isset($_POST["insert"]))
 
 	{
 		//Check if input characters are valid
-		if (!preg_match("/^[a-zA-Z]+$/", $name)) 
+		if (!preg_match("/^[a-zA-Z ]*$/", $name)) 
 		{
 			header("Location: ../crudindex.php?insert=invalid");
 			exit();
@@ -84,6 +89,7 @@ if(isset($_POST["insert"]))
 } else {
 	header("Location: ../crudindex.php");
 	exit();
+}
 }
 
 
