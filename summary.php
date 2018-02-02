@@ -1,5 +1,5 @@
 <?php
-	include_once 'header.php';
+	include_once 'afterlogin.php';
 ?>
 
 <section class="main-container">
@@ -16,7 +16,7 @@
 
 			<br/><br/>
 
-			<form class="bye" method="POST">
+			<form class="summary-form" method="POST">
 					<label>Feedback / Suggestions:</label>
 					<br/><br/>
 					<textarea rows="4" cols="50" name="comment" form="usrform">Please leave a feedback for us..</textarea>
@@ -25,8 +25,11 @@
 
 					<!--so once submitted will go back to catalogue-->
 					<button type="submit" name="submit"><a href= "index.php">Browse Catalogue</a></button>
+
+					<button type="submit" name="submit"><a href= "index.php">Submit</a></button>
+					
 			</form>
-		
+			
 		</div>
 	</div>
 </section>
