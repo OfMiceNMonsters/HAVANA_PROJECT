@@ -11,16 +11,27 @@
 		<!--use POST method cause dont want to show password // dont want to pass info in a visible way-->
 		<div id="example1">
 			<!--just to show that you're at main page-->
-			<h2>Settings</h2>
-			
-					<button type="Forgot Password" class="button" name="Forgot Password" value="Forgot Password">Forgot Password</button>
+			<h5 class="settings-header">Settings</h5>
+			<br>
+						<table align="center">
+						  <tr>
+						    <td><a class="Password-button" href="http://www.google.com">Forgot Your Password</a></td>
+						  </tr>
+						  
+						  <tr>
+						  <td><a class="Password-button" href="http://www.youtube.com">Change your password</a></td>
+						  </tr>
+						  
+						  <tr>
+						  <td><a class="Password-button" href="http://www.yahoo.com">Delete your account </td>
+						  </tr>
 
-					<button type="Change Password" class="button" name="Change Password" value="Change Password">Change Password</button>
+						   <tr>
+						  <td><a class="Password-button" href="http://www.outlook.com">Change Email Address</td>
+						  </tr>
+						  
+						</table>	
 
-					<button type="Change Email" class="button" name="Change Email" value="Change Email">Change Email</button>
-
-					<button type="Delete Account" class="button" name="Delete Account" value="Delete Account">Delete Account</button>
-				
 		</div>
 	</div>
 </section>
@@ -28,4 +39,3 @@
 <?php
 	include_once 'footer.php';
 ?>
-
