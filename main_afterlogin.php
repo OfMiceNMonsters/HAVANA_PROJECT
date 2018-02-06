@@ -1,5 +1,5 @@
 <?php
-	include_once 'aftersignup.php';
+	include_once 'afterlogin.php';
 	$connect = mysqli_connect("localhost", "root", "", "havana");
 ?>
 
