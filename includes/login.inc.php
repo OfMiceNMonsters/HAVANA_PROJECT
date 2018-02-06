@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
 		header("Location: ../index.php");
 		exit();
 	} else {
-		$sql = "SELECT * FROM users WHERE user_uid='$uid' OR user_email='$uid'";
+		$sql = "SELECT * FROM usersandemail WHERE user_uid='$uid' OR user_email='$uid'";
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
 		if ($resultCheck < 1) {
