@@ -1,13 +1,21 @@
 <?php
 
-session_start();
+$conn = mysqli_connect("localhost", "root", "", "havana");;
+
+function strip_tag($string) { 
+
+	// strip html & php tags
+	$string = strip_tags($string);
+	// strip control characters
+	return preg_replace('/[[:punct:]]/', ' ', $string);
+
+}
 
 if (isset($_POST['submit'])) {
 	
-	include 'dbh.inc.php';
 
-	$uid = mysqli_real_escape_string($conn, $_POST['uid']);
-	$pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
+	$uid = strip_tags($_POST['uid']);
+	$pwd = strip_tags($_POST['pwd']);
 
 	//Error handlers
 	//Check if inputs are empty
@@ -26,7 +34,7 @@ if (isset($_POST['submit'])) {
 				//De-hashing the password
 				$hashedPwdCheck = password_verify($pwd, $row['user_pwd']);
 				if ($hashedPwdCheck == false) {
-					echo 'Please try again, invalid username or password. <a href="<a href=C:\xampp\htdocs\prac\LOGIN_2_SYA\LOGIN_2_SYA\rootfolder\KHAI_HOMEPAGE\LOGIN_khai\rootfolder\index.php">Return to Homepage </a> ';
+					echo 'Please try again, invalid username or password. <a href="index.php">Return to Homepage </a> ';
 					exit();
 				} elseif ($hashedPwdCheck == true) {
 					//Log in the user here
