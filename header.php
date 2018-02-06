@@ -28,7 +28,7 @@
 							<input type="password" name="pwd" placeholder="Password" required>
 							<button type="submit" name="submit">Login</button>
 						</form>
-						<a href="signup.php">Sign up</a>';
+						<a href="signwithemail2.php">Sign up</a>';
 					}
 				?>
 
