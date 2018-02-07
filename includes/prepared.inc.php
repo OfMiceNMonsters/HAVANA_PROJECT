@@ -62,7 +62,7 @@
 	if  (!preg_match("/^[a-zA-Z ]*$/", $name))
 		{
 			// if never follow regex, go to shippingname.php error page
-			header("Location: ../shippingname.php");
+			header("Location: ../HAVANA_PROJECT-master/error/shippingname.php");
 		 	exit();
 		} 
 		
