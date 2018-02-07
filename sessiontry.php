@@ -1,6 +1,7 @@
- <?php
+<?php
 
   //session management. In every session, generate its own token to check for time validity 
+
 if(!isset($_SESSION['token'])){
 
   //uniqid abit dangerous though because it does not have any encrpyted capabilities.
@@ -38,6 +39,8 @@ if($_POST['token'] == $_SESSION['token']){
 else{
   //if the token is not set then means that the session token has expired.
   header("Location: ../index.php?session=timeout")
+  
+}
+}
+
   ?>
-}
-}
