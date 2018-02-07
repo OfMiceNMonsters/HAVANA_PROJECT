@@ -25,9 +25,9 @@
 				?>
 
 					<a href="aboutuslogged.php">About Us</a>
-					<a href="cart.php">&nbsp;&nbsp;&nbsp;&nbsp;Cart</a>
+					<a href="contactuslogged.php">Contact Us</a>
+					<a href="cart.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cart</a>
 					<a href="settingslogged.php">Settings </a> 
-					<a href="faqlogged.php">FAQ</a>
 
 			</div>
 		</div>

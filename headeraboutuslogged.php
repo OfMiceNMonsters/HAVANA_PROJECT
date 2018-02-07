@@ -18,16 +18,17 @@
 			</ul>
 			<div class="nav-login">
 				<?php
+					
 						echo '<form action="includes/logout.inc.php" method="POST">
 							<button type="submit" name="submit">Logout</button>
 						</form>';
 					
 				?>
 
-					<a href="aboutuslogged.php">About Us</a>
-					<a href="cart.php">&nbsp;&nbsp;&nbsp;&nbsp;Cart</a>
-					<a href="settingslogged.php">Settings </a> 
-					<a href="faqlogged.php">FAQ</a>
+				<a href="contactuslogged.php">Contact Us</a>
+				<a href="cart.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cart</a>
+				<a href="settingslogged.php">Settings </a> 
+				<a href="faqlogged.php">FAQ</a>
 
 			</div>
 		</div>
