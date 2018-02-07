@@ -2,14 +2,24 @@
 
 $conn=mysqli_connect('localhost','root','','havana');
 
+function strip_tag($string) { 
+
+	// strip html & php tags
+	$string = strip_tags($string);
+	// strip control characters
+	return preg_replace('/[[:punct:]]/', ' ', $string);
+
+}
+
 if (isset($_POST['submit'])) {
 	
-	$firstname = $_POST['firstname'];
-	$lastname = $_POST['lastname'];
-	$email = $_POST['email'];
-	$username = $_POST['username'];
-	$password = $_POST['pwd'];
-	$repassword = $_POST['repwd'];
+	$firstname = strip_tags($_POST['firstname']);
+	$lastname = strip_tags($_POST['lastname']);
+	$email = strip_tags($_POST['email']);
+	$username = strip_tags($_POST['username']);
+	$password = strip_tags($_POST['pwd']);
+	$repassword = strip_tags($_POST['repwd']);
+
 
 	//Error handlers
 	//Check for empty fields
