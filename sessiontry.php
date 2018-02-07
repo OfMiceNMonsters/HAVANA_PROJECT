@@ -17,7 +17,7 @@ if($_POST['token'] == $_SESSION['token']){
   if($age_token <= 1800){ //limit the validity of token. counts in min? we give 30mins? 60*30=1800
 
     //so if you don't have a session id, never login so, redirect to index.php
-    if(!isset($_SESSION['u_id'])){
+    if(!isset($_SESSION['user_id'])){
       header("Location: ../index.php");
 
     }else{
