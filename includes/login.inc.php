@@ -1,8 +1,21 @@
 <?php
 
+$conn = mysqli_connect("localhost", "root", "", "havana");
+session_start();
+
+function strip_tag($string) { 
+
+	// strip html & php tags
+	$string = strip_tags($string);
+	// strip control characters
+	return preg_replace('/[[:punct:]]/', ' ', $string);
+
+}
+
+
 if (isset($_POST['submit'])) {
 	
-	$conn = mysqli_connect("localhost", "root", "", "havana");
+	include 'dbh.inc.php';
 
 	$uid = $_POST['uid'];
 	$pwd = $_POST['pwd'];
@@ -28,18 +41,50 @@ if (isset($_POST['submit'])) {
 					exit();
 				} elseif ($hashedPwdCheck == true) {
 					//Log in the user here
-					$_SESSION['u_id'] = $row['user_id'];
-					$_SESSION['u_first'] = $row['user_firstname'];
-					$_SESSION['u_last'] = $row['user_lastname'];
-					$_SESSION['u_email'] = $row['user_email'];
-					$_SESSION['u_uid'] = $row['username'];
-					header("Location: ../main_afterlogin.php");
+					$_SESSION['user_id'] = $row['user_id'];
+					$_SESSION['user_email'] = $row['user_email'];
+					$_SESSION['user_uid'] = $row['username'];
+					$_SESSION['role']= $row['role'];
+					if($_POST['token'] == $_SESSION['token']){
+					  $age_token = time() - $_SESSION['token_time'];
+					  if($age_token <= 30){ //limit the validity of token. counts in min? we give 30mins? 60*30=1800
+
+					    //so if you don't have a session id, never login so, redirect to index.php
+					    if(!isset($_SESSION['user_id'])){
+					      header("Location: ../index.php");
+
+					    }else{
+
+					      //if the session has been set, the if else loop will check if user is an admin or not 
+					      if($_SESSION['role'] == 'admin'){
+					        //if admin, then redirect them to the admin page
+					        header("Location: ../crudINDEX.php");
+					      }else{
+					        //if it is not an admin, it would be a normal user
+					        //redirect to member page
+					        header("Location: ../index.php");
+
+					      
+					    }
+
+					  } 
+					}
+					}
+					else{
+					  //if the token is not set then means that the session token has expired.
+					  header("Location: ../index.php?session=timeout");
+					  
+					}
+
+					      
+					    }
+
 					exit();
 				}
 			}
 		}
 	}
-} else {
+ else {
 	header("Location: ../index.php?login=error");
 	exit();
 }
