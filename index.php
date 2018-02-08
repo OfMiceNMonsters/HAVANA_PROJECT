@@ -60,7 +60,7 @@ else{
                 ?> 
                 <div class="column" style="background-color: white;">
                 <div class ="row">  
-                     <form method="post" action="index.php?action=add&id=<?php echo $row["id"]; ?>">
+                     <form method="post" action="cart.php?action=add&id=<?php echo $row["id"]; ?>">
                           <br>
                           <br>  
                                <img src="<?php echo $row["image"]; ?>" class="img-responsive" alt="Avatar" class="image" style="width:100%"/><br />  
