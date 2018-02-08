@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,17 +19,21 @@
 			<div class="nav-login">
 				<?php
 					if (isset($_SESSION['user_id'])) {
+						$token = md5(uniqid(rand(), TRUE));
+						$_SESSION['token'] = $token;
+						$_SESSION['token_time'] = time();
+						echo $token;
 						echo '<form action="includes/logout.inc.php" method="POST">
 							<button type="submit" name="submit">Logout</button>
 						</form>';
 					} else {
 						$token = md5(uniqid(rand(), TRUE));
 						$_SESSION['token'] = $token;
-						$_SESSION['token_time'] = time(); 
+						$_SESSION['token_time'] = time() + 60; 
 						echo '<form action="includes/login.inc.php" method="POST">
 							<input type="text" name="uid" placeholder="Username/E-mail" required>
 							<input type="password" name="pwd" placeholder="Password" required>
-							<input type =”hidden” name=”token” value=”<?php echo $token; ?>” />
+							<input type ="hidden" name="token" value="<?php echo $token; ?>" />
 							<button type="submit" name="submit">Login</button>
 						</form>
 						<a href="signwithemail2.php">Sign up</a>';
